@@ -7,7 +7,7 @@ export interface Props {
   page: number;
 }
 
-export const Pagination = ({ totalPages, page }: Props) => {
+export const Pagination = React.memo(({ totalPages, page }: Props) => {
   const { firstArr, lastArr, isActive, prev, next, jump } = usePagination(totalPages, page);
 
   return (
@@ -29,4 +29,4 @@ export const Pagination = ({ totalPages, page }: Props) => {
       <button onClick={next}>&raquo;</button>
     </div>
   );
-};
+});

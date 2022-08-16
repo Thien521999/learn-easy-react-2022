@@ -5,16 +5,19 @@ import { useQuery } from '../hooks/useQuery';
 
 export const Home = () => {
   const [limit, setLimit] = useState(2);
-  const [page, setPage] = useState(1);
   const [products, setProducts] = useState([]);
 
   const {search} = useLocation();
-  console.log(search);
+
+  const page = useMemo(()=>{
+    const page = new URLSearchParams(search).get('page') || 1;
+    return Number(page);
+  }, [search])
 
   const url = `/products?limit=${limit}&page=${page}`;
   const { data, loading, error } = useQuery(url);
 
-  // useeffect chay sau khi render
+  // useEffect chay sau khi render
   useEffect(() => {
     if (data?.products) setProducts(data?.products);
   }, [data?.products]);
@@ -26,10 +29,7 @@ export const Home = () => {
     return Math.ceil(data.count / limit)
   }, [data.count])
 
-  useEffect(()=>{
-    const page = new URLSearchParams(search).get('page') || 1;
-    setPage(Number(page));
-  }, [search])
+  
 
   return (
     <main>

@@ -7,7 +7,7 @@ export interface ProductsProps {
   products: product[];
 }
 
-export const Products = ({ products }: ProductsProps) => {
+export const Products = React.memo(({ products }: ProductsProps) => {
   return (
     <div className="products">
       {products.map((product) => (
@@ -15,4 +15,4 @@ export const Products = ({ products }: ProductsProps) => {
       ))}
     </div>
   );
-};
+});
