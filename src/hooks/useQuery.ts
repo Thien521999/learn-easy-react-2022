@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
 import { axiosClient } from '../api/axios-client';
-import { ToastContainer, toast } from 'react-toastify';
 
 export const useQuery = (url) => {
   const [loading, setLoading] = useState(true);

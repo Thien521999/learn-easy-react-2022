@@ -1,8 +1,8 @@
 import { useMemo } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useCustomRouter } from './useCustomRouter';
 
-export const usePagination = (totalPages, page) => {
-  const navigate = useNavigate();
+export const usePagination = (totalPages, page, sort) => {
+  const { pushQuery } = useCustomRouter();
 
   const { firstArr, lastArr } = useMemo(() => {
     const newArr = [...Array(totalPages)].map((_, i) => i + 1);
@@ -33,16 +33,16 @@ export const usePagination = (totalPages, page) => {
 
   const prev = () => {
     const newPage = Math.max(page - 1, 1);
-    navigate(`?page=${newPage}`);
+    pushQuery({ page: newPage, sort });
   };
 
   const next = () => {
     const newPage = Math.min(page + 1, totalPages);
-    navigate(`?page=${newPage}`);
+    pushQuery({ page: newPage, sort });
   };
 
   const jump = (num) => {
-    navigate(`?page=${num}`);
+    pushQuery({ page: num, sort });
   };
 
   return {
