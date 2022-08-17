@@ -10,9 +10,12 @@ export interface ProductsProps {
 export const Products = React.memo(({ products }: ProductsProps) => {
   return (
     <div className="products">
-      {products.map((product) => (
-        <ProductCard product={product} key={product._id} />
-      ))}
+      {products?.length > 0 ? (
+        products?.map((product) => <ProductCard product={product} key={product._id} />)
+      ) : (
+        <h2>No Product</h2>
+      )}
+      {}
     </div>
   );
 });
