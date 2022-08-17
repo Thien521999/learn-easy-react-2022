@@ -4,12 +4,10 @@ import './Pagination.css';
 
 export interface Props {
   totalPages: number;
-  page: number;
-  sort: String;
 }
 
-export const Pagination = React.memo(({ totalPages, page, sort }: Props) => {
-  const { firstArr, lastArr, isActive, prev, next, jump } = usePagination(totalPages, page, sort);
+export const Pagination = React.memo(({ totalPages}: Props) => {
+  const { firstArr, lastArr, isActive, prev, next, jump } = usePagination(totalPages);
 
   return (
     <div className="pagination">

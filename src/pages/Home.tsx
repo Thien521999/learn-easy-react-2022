@@ -1,19 +1,13 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import { useLocation } from 'react-router-dom';
 import { Pagination, Products, Sorting } from '../components';
+import { useMyContext } from '../context/store';
 import { useQuery } from '../hooks/useQuery';
 
 export const Home = () => {
   const [limit, setLimit] = useState(2);
   const [products, setProducts] = useState([]);
 
-  const { search } = useLocation();
-
-  const { page, sort } = useMemo(() => {
-    const page = new URLSearchParams(search).get('page') || 1;
-    const sort = new URLSearchParams(search).get('sort') || '-createdAt';
-    return { page: Number(page), sort: sort };
-  }, [search]);
+  const {page, sort} = useMyContext();
 
   const url = `/products?limit=${limit}&page=${page}&sort=${sort}`;
   const { data, loading, error } = useQuery(url);
@@ -33,10 +27,10 @@ export const Home = () => {
   return (
     <main>
       <div>
-        <Sorting page={page} sort={sort} />
+        <Sorting/>
         {loading ? '...loding' : <Products products={products} />}
         {error && <h2>{error}</h2>}
-        <Pagination totalPages={totalPages} page={page} sort={sort} />
+        <Pagination totalPages={totalPages}/>
       </div>
     </main>
   );

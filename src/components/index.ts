@@ -3,3 +3,7 @@ export * from './product-card/ProductCard';
 export * from './product-info/ProductInfo';
 export * from './pagination/Pagination';
 export * from './sorting/Sorting';
+export * from './header/Header';
+export * from './modal/Modal';
+export * from './search-form/SearchForm';
+export * from './filter-form/FilterForm';

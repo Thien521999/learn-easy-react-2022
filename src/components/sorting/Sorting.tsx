@@ -1,15 +1,11 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useMyContext } from '../../context/store';
 import { useCustomRouter } from '../../hooks/useCustomRouter';
 import './Sorting.css';
 
-export interface Props {
-    sort: String;
-    page: number;
-}
-
-export const Sorting = ({sort, page}: Props) => {
+export const Sorting = () => {
     const {pushQuery} = useCustomRouter();
+    const {page, sort} = useMyContext();
     
     const handleSort = (e) => {
         const {value} = e.target;

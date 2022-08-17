@@ -1,8 +1,11 @@
 import { useMemo } from 'react';
+import { useMyContext } from '../context/store';
 import { useCustomRouter } from './useCustomRouter';
 
-export const usePagination = (totalPages, page, sort) => {
+export const usePagination = (totalPages) => {
   const { pushQuery } = useCustomRouter();
+
+  const {page, sort} = useMyContext();
 
   const { firstArr, lastArr } = useMemo(() => {
     const newArr = [...Array(totalPages)].map((_, i) => i + 1);
