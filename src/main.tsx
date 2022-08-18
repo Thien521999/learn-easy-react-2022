@@ -8,12 +8,12 @@ import { ContextProvider } from './context/store';
 import './index.css';
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
-  <React.StrictMode>
+  // <React.StrictMode>
     <BrowserRouter>
       <ContextProvider>
         <App />
         <ToastContainer />
       </ContextProvider>
     </BrowserRouter>
-  </React.StrictMode>
+  // </React.StrictMode>
 );

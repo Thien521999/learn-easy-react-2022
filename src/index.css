@@ -51,8 +51,7 @@ code {
     monospace;
 }
 
-
-/* .btn-load_more{
+.btn-load_more {
   background: white;
   border: 2px solid green;
   padding: 10px 20px;
@@ -61,4 +60,4 @@ code {
   text-transform: uppercase;
   display: block;
   cursor: pointer;
-} */
+}

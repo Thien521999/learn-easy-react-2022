@@ -3,17 +3,21 @@ import { useMyContext } from '../../context/store';
 import { useCustomRouter } from '../../hooks/useCustomRouter';
 import './Sorting.css';
 
-export const Sorting = () => {
-    const {pushQuery} = useCustomRouter();
-    const {page, sort} = useMyContext();
-    
-    const handleSort = (e) => {
-        const {value} = e.target;
-        pushQuery({page, sort: value});
-    }
+export interface Props {
+  page: number;
+}
+
+export const Sorting = ({ page }: Props) => {
+  const { pushQuery } = useCustomRouter();
+  const { sort } = useMyContext();
+
+  const handleSort = (e) => {
+    const { value } = e.target;
+    pushQuery({ page, sort: value });
+  };
 
   return (
-    <div className='sorting'>
+    <div className="sorting">
       <select onChange={handleSort} value={sort}>
         <option value="-createdAt">Newest</option>
         <option value="createdAt">Oldest</option>
@@ -22,5 +26,5 @@ export const Sorting = () => {
       </select>
       <h2>&#8678;Sort</h2>
     </div>
-  )
-}
+  );
+};

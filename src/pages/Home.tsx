@@ -27,7 +27,7 @@ export const Home = () => {
   return (
     <main>
       <div>
-        <Sorting />
+        <Sorting page={page} />
         {loading ? '...loding' : <Products products={products} />}
         {error && <h2>{error}</h2>}
         <Pagination totalPages={totalPages} />
