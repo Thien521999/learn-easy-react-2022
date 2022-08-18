@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 import productApi from '../../api/product-api';
+import { useMutation } from '../../hooks/useMutation';
 import { product } from '../../models';
 import './ProductForm.css';
 
@@ -11,7 +12,9 @@ export interface Props {
 export const ProductForm = ({ btnTxt, data }: Props) => {
   const multiRef = useRef();
 
-  const handleSubmit = (e) => {
+  const {mutate, loading} = useMutation();
+
+  const handleSubmit = async(e) => {
     e.preventDefault();
     const children = multiRef.current.children;
     const newData = [...children].reduce((obj, child) => {
