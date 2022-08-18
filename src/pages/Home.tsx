@@ -7,10 +7,10 @@ export const Home = () => {
   const [limit, setLimit] = useState(2);
   const [products, setProducts] = useState([]);
 
-  const {page, sort} = useMyContext();
+  const { page, sort } = useMyContext();
 
   const url = `/products?limit=${limit}&page=${page}&sort=${sort}`;
-  const { data, loading, error } = useQuery(url);
+  const { data, loading, error } = useQuery(url, { saveCache: true });
 
   // useEffect chay sau khi render
   useEffect(() => {
@@ -27,10 +27,10 @@ export const Home = () => {
   return (
     <main>
       <div>
-        <Sorting/>
+        <Sorting />
         {loading ? '...loding' : <Products products={products} />}
         {error && <h2>{error}</h2>}
-        <Pagination totalPages={totalPages}/>
+        <Pagination totalPages={totalPages} />
       </div>
     </main>
   );
